@@ -12,6 +12,33 @@ public class Card {
 	}
 	
 	public int getValue() {
+		return this.value;
+	}
+	
+	public Suit getSuit() {
+		return this.cardSuit;
+	}
+	
+	public String toString() {
+		String crdStr = "";
+		crdStr += this.cardSuit;
 		
+		if(this.value == 1) {
+			crdStr += 'A';
+		}
+		else if (this.value == 11) {
+			crdStr += 'J';
+		}
+		else if (this.value == 12) {
+			crdStr += 'Q';
+		}
+		else if (this.value == 13) {
+			crdStr += 'K';
+		}
+		else {
+			crdStr += value;
+		}
+		
+		return crdStr;
 	}
 }

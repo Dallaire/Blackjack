@@ -5,15 +5,15 @@ import junit.framework.TestCase;
 public class blackjacktest extends TestCase {
 	
 	public void testCreateDeck() {
-		Deck deck = newDeck();
+		Deck deck = new Deck();
 		assertEquals(52, deck.getSize());
 	}
 	
 	public void testShuffle() {
-		Deck shuffledeck = newDeck();
-		Deck unshuffleddeck = newDeck();
+		Deck shuffledeck = new Deck();
+		Deck unshuffleddeck = new Deck();
 		shuffledeck.Shuffle();
-		assertThat(shuffledeck.cards, not(equalTo(unshuffleddeck.cards)));
+		assertFalse(shuffledeck.cards.equals(unshuffleddeck.cards));
 	}
 	
 	public void testFileInput() {
