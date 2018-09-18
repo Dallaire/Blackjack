@@ -1,6 +1,7 @@
 package common;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 	ArrayList<Card> cards;
@@ -20,6 +21,6 @@ public class Deck {
 	}
 	
 	public void Shuffle() {
-		
+		Collections.shuffle(this.cards);
 	}
 }
