@@ -41,4 +41,15 @@ public class Card {
 		
 		return crdStr;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Card) {
+			Card card = (Card) o;
+			if (this.cardSuit == card.cardSuit && this.value == card.value) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
