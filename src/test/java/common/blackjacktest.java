@@ -1,5 +1,9 @@
 package common;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import junit.framework.TestCase;
 
 public class blackjacktest extends TestCase {
@@ -64,7 +68,14 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerHandDisplay() {
-		
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,9));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		player.printHand();
+		String expected = "Player's cards: H10 H9 \r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testPlayerBust() {
@@ -83,8 +94,26 @@ public class blackjacktest extends TestCase {
 		
 	}
 	
-	public void testDealerHandDisplay() {
-		
+	public void testDealerHandDisplayHidden() {
+		Dealer dealer = new Dealer();
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,9));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		dealer.printHand(true);
+		String expected = "Dealer's cards: [hidden] H9 \r\n";
+		assertEquals(expected, out.toString());
+	}
+	
+	public void testDealerHandDisplayVisible() {
+		Dealer dealer = new Dealer();
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,9));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		dealer.printHand(false);
+		String expected = "Dealer's cards: H10 H9 \r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealerBust() {

@@ -44,4 +44,12 @@ public class Player {
 		
 		return score;
 	}
+	
+	public void printHand() {
+		String output = "Player's cards: ";
+		for (int i=0; i<this.hand.size(); i++) {
+			output = output.concat(this.hand.get(i).toString() + " ");
+		}
+		System.out.println(output);
+	}
 }
