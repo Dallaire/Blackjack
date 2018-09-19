@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Player {
 	private ArrayList<Card> hand = new ArrayList<Card>();
+	private String name;
 	
-	public Player() {
+	public Player(String aName) {
 		this.emptyHand();
+		this.name = aName;
 	}
 	
 	public void emptyHand() {
@@ -45,8 +47,15 @@ public class Player {
 		return score;
 	}
 	
+	public void deal(Deck aDeck) {
+		//get top card
+		
+		//add card to player hand
+		
+	}
+	
 	public void printHand(Boolean hidden) {
-		String output = "Dealer's cards: ";
+		String output = this.name + "'s cards: ";
 		for (int i=0; i<this.hand.size(); i++) {
 			if (i == 0 && hidden == true)
 				output = output.concat("[hidden] ");

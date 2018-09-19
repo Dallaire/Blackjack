@@ -34,35 +34,42 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealPlayer() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		Deck deck = new Deck();
-		deal(deck, player);
-		deal(deck, player);
+		player.deal(deck);
+		player.deal(deck);
 		assertEquals(2, player.getHand().size());
 	}
 	
 	public void testDealDealer() {
-		Player player = new Player();
+		Player player = new Player("Dealer");
 		Deck deck = new Deck();
-		deal(deck, player);
-		deal(deck, player);
+		player.deal(deck);
+		player.deal(deck);
 		assertEquals(2, player.getHand().size());
 	}
 	
-	public void testPlayerVisibleCards() {
+	public void testPlayerDisplayEnd() {
 		
 	}
 	
-	public void testDealerVisibleCards() {
+	public void testDealerDisplayEnd() {
 		
 	}
 	
 	public void testPlayerHit() {
-		
+		Player player = new Player("Player");
+		Deck deck = new Deck();
+		player.deal(deck);
+		assertEquals(1, player.getHand().size());
 	}
 	
 	public void testPlayerHitRepeated() {
-		
+		Player player = new Player("Player");
+		Deck deck = new Deck();
+		player.deal(deck);
+		player.deal(deck);
+		assertEquals(2, player.getHand().size());
 	}
 	
 	public void testPlayerStand() {
@@ -70,7 +77,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerHandDisplay() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,10));
 		player.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
@@ -97,7 +104,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerHandDisplayHidden() {
-		Player dealer = new Player();
+		Player dealer = new Player("Dealer");
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
@@ -108,7 +115,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerHandDisplayVisible() {
-		Player dealer = new Player();
+		Player dealer = new Player("Dealer");
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
@@ -123,7 +130,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testAceLow() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,10));
 		player.addCard(new Card(Suit.H,9));
 		player.addCard(new Card(Suit.H,1));
@@ -132,20 +139,20 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testAceHigh() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,1));
 		assertEquals(11, player.getScore());
 	}
 	
 	public void testTwoAces() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,1));
 		player.addCard(new Card(Suit.C,1));
 		assertEquals(12, player.getScore());
 	}
 	
 	public void testAceHighToLow() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,1));
 		player.addCard(new Card(Suit.C,9));
 		player.addCard(new Card(Suit.C,10));
@@ -153,7 +160,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testTwoAcesLow() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,5));
 		player.addCard(new Card(Suit.C,5));
 		player.addCard(new Card(Suit.H,1));
@@ -162,19 +169,19 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testJack() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.C, 11));
 		assertEquals(10, player.getScore());
 	}
 	
 	public void testQueen() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.C, 12));
 		assertEquals(10, player.getScore());
 	}
 	
 	public void testKing() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.C, 13));
 		assertEquals(10, player.getScore());
 	}
@@ -196,14 +203,14 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerScore() {
-		Player player = new Player();
+		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,4));
 		player.addCard(new Card(Suit.H,6));
 		assertEquals(10, player.getScore());
 	}
 	
 	public void testDealerScore() {
-		Player dealer = new Player();
+		Player dealer = new Player("Dealer");
 		dealer.addCard(new Card(Suit.H,4));
 		dealer.addCard(new Card(Suit.H,6));
 		assertEquals(10, dealer.getScore());
