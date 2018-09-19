@@ -24,13 +24,26 @@ public class Dealer {
 		
 	public int getScore() {
 		int score = 0;
+		int aces = 0;
+		
 		for (Card card: this.hand) {
 			if (card.getValue() > 10) {
 				score += 10;
 			}
-			else
+			else if (card.getValue() == 1) {
+				score += 11;
+				aces++;
+			}
+			else {
 				score+= card.getValue();
+			}
 		}
+		
+		while (score > 21 && aces > 0) {
+			score -= 10;
+			aces--;
+		}
+		
 		return score;
 	}
 }
