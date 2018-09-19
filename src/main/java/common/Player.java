@@ -49,9 +49,9 @@ public class Player {
 	
 	public void deal(Deck aDeck) {
 		//get top card
-		
+		Card newCard = aDeck.cards.remove(0);
 		//add card to player hand
-		
+		this.addCard(newCard);
 	}
 	
 	public void printHand(Boolean hidden) {
