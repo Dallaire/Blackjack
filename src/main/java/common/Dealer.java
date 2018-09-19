@@ -25,7 +25,7 @@ public class Dealer {
 	public int getScore() {
 		int score = 0;
 		for (Card card: this.hand) {
-			if (card.getValue() == 11 || card.getValue() == 12 || card.getValue() == 13) {
+			if (card.getValue() > 10) {
 				score += 10;
 			}
 			else

@@ -31,7 +31,15 @@ public class blackjacktest extends TestCase {
 	
 	public void testDealPlayer() {
 		Player player = new Player();
-		player.deal();
+		Deck deck = new Deck();
+		deal(deck, player);
+		assertEquals(2, player.getHand().size());
+	}
+	
+	public void testDealDealer() {
+		Player player = new Player();
+		Deck deck = new Deck();
+		deal(deck, player);
 		assertEquals(2, player.getHand().size());
 	}
 	
@@ -84,23 +92,41 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testAceLow() {
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,9));
+		player.addCard(new Card(Suit.H,1));
+		assertEquals(20, player.getScore());
 		
 	}
 	
 	public void testAceHigh() {
-		
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,1));
+		assertEquals(11, player.getScore());
 	}
 	
 	public void testTwoAces() {
-		
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,1));
+		player.addCard(new Card(Suit.C,1));
+		assertEquals(12, player.getScore());
 	}
 	
 	public void testAceHighToLow() {
-		
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,1));
+		player.addCard(new Card(Suit.C,9));
+		player.addCard(new Card(Suit.C,10));
+		assertEquals(20, player.getScore());
 	}
 	
 	public void testTwoAcesLow() {
-		
+		Player player = new Player();
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,1));
+		player.addCard(new Card(Suit.C,1));
+		assertEquals(12, player.getScore());
 	}
 	
 	public void testJack() {
