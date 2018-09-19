@@ -24,7 +24,12 @@ public class Player {
 	public int getScore() {
 		int score = 0;
 		for (Card card: this.hand) {
-			
+			if (card.getValue() == 11 || card.getValue() == 12 || card.getValue() == 13) {
+				score += 10;
+			}
+			else
+				score+= card.getValue();
 		}
+		return score;
 	}
 }
