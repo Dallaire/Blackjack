@@ -20,4 +20,11 @@ public class Player {
 	public void addCard(Card aCard) {
 		this.hand.add(aCard);
 	}
+	
+	public int getScore() {
+		int score = 0;
+		for (Card card: this.hand) {
+			
+		}
+	}
 }

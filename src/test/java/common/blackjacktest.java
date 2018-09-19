@@ -103,8 +103,22 @@ public class blackjacktest extends TestCase {
 		
 	}
 	
-	public void testRoyals() {
-		
+	public void testJack() {
+		Player player = new Player();
+		player.addCard(new Card(Suit.C, 11));
+		assertEquals(10, player.getScore());
+	}
+	
+	public void testQueen() {
+		Player player = new Player();
+		player.addCard(new Card(Suit.C, 12));
+		assertEquals(10, player.getScore());
+	}
+	
+	public void testKing() {
+		Player player = new Player();
+		player.addCard(new Card(Suit.C, 13));
+		assertEquals(10, player.getScore());
 	}
 	
 	public void testPlayerBlackjack() {
