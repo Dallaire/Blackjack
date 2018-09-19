@@ -28,6 +28,12 @@ public class blackjacktest extends TestCase {
 		
 	}
 	
+	public void testDealPlayer() {
+		Player player = new Player();
+		player.Deal();
+		assertEquals(2, player.getHand().size());
+	}
+	
 	public void testPlayerVisibleCards() {
 		
 	}
