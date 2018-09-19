@@ -16,6 +16,7 @@ public class blackjacktest extends TestCase {
 		assertFalse(shuffledeck.cards.equals(unshuffleddeck.cards));
 	}
 	
+	
 	public void testFileInput() {
 		
 	}
@@ -30,7 +31,7 @@ public class blackjacktest extends TestCase {
 	
 	public void testDealPlayer() {
 		Player player = new Player();
-		player.Deal();
+		player.deal();
 		assertEquals(2, player.getHand().size());
 	}
 	
@@ -123,7 +124,11 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerScore() {
-		
+		Player player = new Player();
+		Deck deck = new Deck();
+		player.addCard(new Card(Suit.H,4));
+		player.addCard(new Card(Suit.H,6));
+		asserEquals(10, player.getScore());
 	}
 	
 	public void testDealerScore() {
