@@ -73,7 +73,7 @@ public class blackjacktest extends TestCase {
 		player.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(out));
-		player.printHand();
+		player.printHand(false);
 		String expected = "Player's cards: H10 H9 \r\n";
 		assertEquals(expected, out.toString());
 	}
@@ -95,7 +95,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerHandDisplayHidden() {
-		Dealer dealer = new Dealer();
+		Player dealer = new Player();
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
@@ -106,7 +106,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerHandDisplayVisible() {
-		Dealer dealer = new Dealer();
+		Player dealer = new Player();
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
@@ -201,7 +201,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerScore() {
-		Dealer dealer = new Dealer();
+		Player dealer = new Player();
 		dealer.addCard(new Card(Suit.H,4));
 		dealer.addCard(new Card(Suit.H,6));
 		assertEquals(10, dealer.getScore());

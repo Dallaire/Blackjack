@@ -45,10 +45,13 @@ public class Player {
 		return score;
 	}
 	
-	public void printHand() {
-		String output = "Player's cards: ";
+	public void printHand(Boolean hidden) {
+		String output = "Dealer's cards: ";
 		for (int i=0; i<this.hand.size(); i++) {
-			output = output.concat(this.hand.get(i).toString() + " ");
+			if (i == 0 && hidden == true)
+				output = output.concat("[hidden] ");
+			else
+				output = output.concat(this.hand.get(i).toString() + " ");
 		}
 		System.out.println(output);
 	}
