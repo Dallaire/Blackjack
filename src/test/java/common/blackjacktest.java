@@ -37,12 +37,14 @@ public class blackjacktest extends TestCase {
 		Player player = new Player();
 		Deck deck = new Deck();
 		deal(deck, player);
+		deal(deck, player);
 		assertEquals(2, player.getHand().size());
 	}
 	
 	public void testDealDealer() {
 		Player player = new Player();
 		Deck deck = new Deck();
+		deal(deck, player);
 		deal(deck, player);
 		assertEquals(2, player.getHand().size());
 	}
