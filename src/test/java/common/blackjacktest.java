@@ -100,7 +100,11 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerHitRepeated() {
-		
+		Player dealer = new Player("Player");
+		Deck deck = new Deck();
+		dealer.deal(deck);
+		dealer.deal(deck);
+		assertEquals(2, dealer.getHand().size());
 	}
 	
 	public void testDealerHandDisplayHidden() {
