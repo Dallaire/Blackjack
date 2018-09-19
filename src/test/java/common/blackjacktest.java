@@ -152,7 +152,8 @@ public class blackjacktest extends TestCase {
 	
 	public void testTwoAcesLow() {
 		Player player = new Player();
-		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,5));
+		player.addCard(new Card(Suit.C,5));
 		player.addCard(new Card(Suit.H,1));
 		player.addCard(new Card(Suit.C,1));
 		assertEquals(12, player.getScore());
