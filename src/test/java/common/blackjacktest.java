@@ -139,14 +139,16 @@ public class blackjacktest extends TestCase {
 	
 	public void testPlayerScore() {
 		Player player = new Player();
-		Deck deck = new Deck();
 		player.addCard(new Card(Suit.H,4));
 		player.addCard(new Card(Suit.H,6));
 		assertEquals(10, player.getScore());
 	}
 	
 	public void testDealerScore() {
-		
+		Dealer dealer = new Dealer();
+		dealer.addCard(new Card(Suit.H,4));
+		dealer.addCard(new Card(Suit.H,6));
+		assertEquals(10, dealer.getScore());
 	}
 	
 	public void testPlayerWin() {
