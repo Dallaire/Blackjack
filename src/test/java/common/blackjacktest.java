@@ -25,7 +25,7 @@ public class blackjacktest extends TestCase {
 	
 	public void testFileInput() {
 		Game game = new Game();
-		game.runConsole();
+		game.runFile();
 		assertEquals("File", game.mode);
 	}
 	

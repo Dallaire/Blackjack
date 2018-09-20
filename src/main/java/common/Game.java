@@ -3,7 +3,7 @@ package common;
 import java.util.Scanner;
 
 public class Game {
-
+	public String mode;
 	public static void main(String[] args) {
 		//Initialize
 		Deck deck = new Deck();
@@ -26,11 +26,11 @@ public class Game {
 		
 	}
 	public void runFile() {
-		
+		this.mode = "File";
 	}
 	
 	public void runConsole() {
-		
+		this.mode = "Console";
 	}
 	
 	
