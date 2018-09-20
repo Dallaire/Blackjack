@@ -258,11 +258,31 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerBlackjackWin() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		player.addCard(new Card(Suit.H,1));
+		player.addCard(new Card(Suit.H,12));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Blackjack! Player wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealerBlackjackWin() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,1));
+		dealer.addCard(new Card(Suit.H,12));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Blackjack! Dealer wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testPlayerScore() {
@@ -280,11 +300,35 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerWin() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		player.addCard(new Card(Suit.H,8));
+		player.addCard(new Card(Suit.H,12));
+		dealer.addCard(new Card(Suit.H,7));
+		dealer.addCard(new Card(Suit.H,11));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Player wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealerWin() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		player.addCard(new Card(Suit.H,6));
+		player.addCard(new Card(Suit.H,12));
+		dealer.addCard(new Card(Suit.H,7));
+		dealer.addCard(new Card(Suit.H,11));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Dealer wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testPlayerSplit() {

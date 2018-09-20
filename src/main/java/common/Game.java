@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Game {
 	public String mode;
+	
 	public static void main(String[] args) {
 		//Initialize
 		Deck deck = new Deck();
@@ -38,7 +39,6 @@ public class Game {
 		reader.close();
 		
 		//Initialize
-		Deck deck = new Deck();
 		Player player = new Player("Player");
 		Player dealer = new Player("Dealer");
 		
@@ -116,8 +116,11 @@ public class Game {
 			}
 			
 			player.printHand(false);
-			dealer.printHand(false);
 			player.printScore();
+			dealer.printHand(false);
+			dealer.printScore();
+			
+			score(dealer, player);
 			
 		}
 		catch(FileNotFoundException ex) {
@@ -164,5 +167,8 @@ public class Game {
 		return r;
 	}
 	
+	public void score(Player aDealer, Player aPlayer) {
+		
+	}
 }
 
