@@ -154,19 +154,52 @@ public class Game {
 		dealer.printHand(true);
 		
 		//initial
-		if (scoreInital(dealer, player) == false) {
-			takeTurnPlayer(deck, player);
-			takeTurnDealer(deck, dealer);
+		Boolean turn = true;
+		if (scoreInitial(dealer, player) == false) {
+			while (turn) {
+			turn = takeTurnPlayer(deck, player);
+			}
+			while (turn) {
+				turn = takeTurnDealer(deck, dealer);
+			}
 			score(dealer, player); //end of game
 		}
 	}
 	
-	public void takeTurnPlayer(Deck aDeck, Player aPlayer) {
-		
+	public Boolean takeTurnPlayer(Deck aDeck, Player aPlayer) {
+		if (aPlayer.getScore() >= 21)
+			return false;
+		else {
+			Scanner reader = new Scanner(System.in);
+			System.out.println("Enter H to hit, S to stand");
+			String r = reader.nextLine();
+			reader.close();
+			r.toUpperCase();
+			if (r == "H"){
+				return true;
+			}
+			else if(r == "S") {
+				return false;
+			}
+			else {
+				System.out.print("Invalid input");
+				return this.takeTurnPlayer(aDeck, aPlayer);
+			}
+		}
 	}
 	
-	public void takeTurnDealer(Deck aDeck, Player aDealer) {
-		
+	public Boolean takeTurnDealer(Deck aDeck, Player aDealer) {
+		int score = aDealer.getScore();
+		if (score < 17) {
+			aDealer.deal(aDeck);
+			return true;
+		}
+		else if (score == 17 && aDealer.soft == true) {
+			aDealer.deal(aDeck);
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	public String choise() {
@@ -178,8 +211,17 @@ public class Game {
 		return r;
 	}
 	
-	public void scoreInitial(Player aDealer, Player aPlayer) {
-		
+	public Boolean scoreInitial(Player aDealer, Player aPlayer) {
+		Boolean win = false;
+		if (aDealer.getScore() == 21) {
+			System.out.println("Blackjack! Dealer wins.");
+			win = true;
+		}
+		else if (aPlayer.getScore() == 21) {
+			System.out.println("Blackjack! Player wins.");
+			win = true;
+		}
+		return win;
 	}
 	
 	public void score(Player aDealer, Player aPlayer) {

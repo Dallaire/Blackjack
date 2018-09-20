@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player {
 	private ArrayList<Card> hand = new ArrayList<Card>();
 	private String name;
+	Boolean soft = false;
 	
 	public Player(String aName) {
 		this.emptyHand();
@@ -25,7 +26,7 @@ public class Player {
 	
 	public int getScore() {
 		int score = 0;
-		int aces = 0;
+		int acesHand = 0;
 		
 		for (Card card: this.hand) {
 			if (card.getValue() > 10) {
@@ -33,16 +34,18 @@ public class Player {
 			}
 			else if (card.getValue() == 1) {
 				score += 11;
-				aces++;
+				acesHand++;
 			}
 			else
 				score+= card.getValue();
 		}
 		
-		while (score > 21 && aces > 0) {
+		while (score > 21 && acesHand > 0) {
 			score -= 10;
-			aces--;
+			acesHand--;
 		}
+		if (acesHand != 0)
+			this.soft = true;
 		
 		return score;
 	}
@@ -52,6 +55,8 @@ public class Player {
 		Card newCard = aDeck.cards.remove(0);
 		//add card to player hand
 		this.addCard(newCard);
+		if (newCard.getValue() == 1)
+			this.soft = true;
 	}
 	
 	public void printHand(Boolean hidden) {

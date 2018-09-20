@@ -65,17 +65,18 @@ public class blackjacktest extends TestCase {
 		assertEquals(expected, out.toString());
 	}
 	
-	public void testFileInput() {
+	/*public void testFileInput() {
 		Game game = new Game();
 		game.runFile();
 		assertEquals("File", game.mode);
-	}
+	}*/
 	
+	/*
 	public void testConsoleInput() {
 		Game game = new Game();
 		game.runConsole();
 		assertEquals("Console", game.mode);
-	}
+	}*/
 	
 	public void testInputChoiceConsole() {
 		Game game = new Game();
@@ -124,7 +125,15 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerStand() {
-		
+		Game game = new Game();
+		Deck deck = new Deck();
+		Player player = new Player("Player");
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,12));
+		InputStream in = new ByteArrayInputStream("S".getBytes());
+		System.setIn(in);
+		game.takeTurnPlayer(deck, player);
+		assertEquals(2, player.getHand().size());
 	}
 	
 	public void testPlayerHandDisplay() {
@@ -159,15 +168,14 @@ public class blackjacktest extends TestCase {
 		Player dealer = new Player("Dealer");
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,6));
-		game.takeTurnDealer(deck, dealer);
-		assertEquals(3, dealer.getHand().size());
+		assertTrue(game.takeTurnDealer(deck, dealer));
 	}
 	
 	public void testDealerSoft17() {
 		Game game = new Game();
 		Deck deck = new Deck();
 		Player dealer = new Player("Dealer");
-		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,6));
 		dealer.addCard(new Card(Suit.H,1));
 		game.takeTurnDealer(deck, dealer);
 		assertEquals(3, dealer.getHand().size());
