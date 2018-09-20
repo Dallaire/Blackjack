@@ -168,7 +168,21 @@ public class Game {
 	}
 	
 	public void score(Player aDealer, Player aPlayer) {
-		
+		//TODO
+		if (aDealer.getScore() == 21)
+			System.out.println("Blackjack! Dealer wins.");
+		else if (aPlayer.getScore() == 21)
+			System.out.println("Blackjack! Player wins.");
+		else if (aPlayer.getScore() > 21)
+			System.out.println("Bust! Dealer wins.");
+		else if (aDealer.getScore() > 21)
+			System.out.println("Bust! Player wins.");
+		else if (aDealer.getScore() == aPlayer.getScore())
+			System.out.println("Even. Dealer wins.");
+		else if (aDealer.getScore() > aPlayer.getScore())
+			System.out.println("Dealer wins.");
+		else if (aPlayer.getScore() > aDealer.getScore())
+			System.out.println("Player wins.");
 	}
 }
 
