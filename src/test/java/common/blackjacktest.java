@@ -79,16 +79,16 @@ public class blackjacktest extends TestCase {
 	}*/
 	
 	public void testInputChoiceConsole() {
-		Game game = new Game();
 		InputStream in = new ByteArrayInputStream("c".getBytes());
 		System.setIn(in);
+		Game game = new Game();
 		String choise = game.choise();
 		assertEquals("C", choise);
 	}
 	public void testInputChoiceFile() {
-		Game game = new Game();
 		InputStream in = new ByteArrayInputStream("f".getBytes());
 		System.setIn(in);
+		Game game = new Game();
 		String choise = game.choise();
 		assertEquals("F", choise);
 	}
@@ -125,13 +125,13 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerStand() {
+		InputStream in = new ByteArrayInputStream("S".getBytes());
+		System.setIn(in);
 		Game game = new Game();
 		Deck deck = new Deck();
 		Player player = new Player("Player");
 		player.addCard(new Card(Suit.H,10));
 		player.addCard(new Card(Suit.H,12));
-		InputStream in = new ByteArrayInputStream("S".getBytes());
-		System.setIn(in);
 		game.takeTurnPlayer(deck, player);
 		assertEquals(2, player.getHand().size());
 	}

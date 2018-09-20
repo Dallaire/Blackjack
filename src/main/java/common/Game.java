@@ -8,9 +8,17 @@ import java.util.Scanner;
 
 public class Game {
 	public String mode;
+	Scanner reader = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		
+		Game game = new Game();
+		String choise = game.choise();
+		if (choise.equals("F"))
+			game.runFile();
+		else if (choise.equals("C"))
+			game.runConsole();
+		else
+			System.out.println("invalid choise");
 	}
 	
 	public Game() {
@@ -139,6 +147,7 @@ public class Game {
 		this.mode = "Console";
 		//Initialize
 		Deck deck = new Deck();
+		deck.Shuffle();
 		Player player = new Player("Player");
 		Player dealer = new Player("Dealer");
 		//deal cards
@@ -159,6 +168,7 @@ public class Game {
 			while (turn) {
 			turn = takeTurnPlayer(deck, player);
 			}
+			turn = true;
 			while (turn) {
 				turn = takeTurnDealer(deck, dealer);
 			}
@@ -170,15 +180,18 @@ public class Game {
 		if (aPlayer.getScore() >= 21)
 			return false;
 		else {
-			Scanner reader = new Scanner(System.in);
+
 			System.out.println("Enter H to hit, S to stand");
 			String r = reader.nextLine();
-			reader.close();
-			r.toUpperCase();
-			if (r == "H"){
+			r = r.toUpperCase();
+			System.out.println(r);
+			if (r.equals("H")){
+				aPlayer.deal(aDeck);
+				aPlayer.printHand(false);
+				aPlayer.printScore();
 				return true;
 			}
-			else if(r == "S") {
+			else if(r.equals("S")) {
 				return false;
 			}
 			else {
@@ -198,15 +211,15 @@ public class Game {
 			aDealer.deal(aDeck);
 			return true;
 		}
-		else
+		else {
 			return false;
+		}
 	}
 	
 	public String choise() {
-		Scanner reader = new Scanner(System.in);
+		
 		System.out.println("Enter C for console F for file");
 		String r = reader.nextLine();
-		reader.close();
 		r = r.toUpperCase();
 		return r;
 	}
@@ -225,20 +238,55 @@ public class Game {
 	}
 	
 	public void score(Player aDealer, Player aPlayer) {
-		if (aDealer.getScore() == 21)
+		if (aDealer.getScore() == 21) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Blackjack! Dealer wins.");
-		else if (aPlayer.getScore() == 21)
+		}
+		else if (aPlayer.getScore() == 21) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Blackjack! Player wins.");
-		else if (aPlayer.getScore() > 21)
+		}
+		else if (aPlayer.getScore() > 21) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Bust! Dealer wins.");
-		else if (aDealer.getScore() > 21)
+		}
+		else if (aDealer.getScore() > 21) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Bust! Player wins.");
-		else if (aDealer.getScore() == aPlayer.getScore())
+		}
+		else if (aDealer.getScore() == aPlayer.getScore()) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Even. Dealer wins.");
-		else if (aDealer.getScore() > aPlayer.getScore())
+		}
+		else if (aDealer.getScore() > aPlayer.getScore()) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Dealer wins.");
-		else if (aPlayer.getScore() > aDealer.getScore())
+		}
+		else if (aPlayer.getScore() > aDealer.getScore()) {
+			aPlayer.printHand(false);
+			aPlayer.printScore();
+			aDealer.printHand(false);
+			aDealer.printScore();
 			System.out.println("Player wins.");
+		}
 	}
 	
 }
