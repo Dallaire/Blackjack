@@ -154,17 +154,20 @@ public class Game {
 		dealer.printHand(true);
 		
 		//initial
-		if(dealer.getScore() == 21)
-			System.out.println("Blackjack! Dealer wins.");
-		else if(player.getScore() == 21)
-			System.out.println("Blackjack! Player wins.");
-		else {
+		if (scoreInital(dealer, player) == false) {
 			takeTurnPlayer(deck, player);
 			takeTurnDealer(deck, dealer);
 			score(dealer, player); //end of game
 		}
 	}
 	
+	public void takeTurnPlayer(Deck aDeck, Player aPlayer) {
+		
+	}
+	
+	public void takeTurnDealer(Deck aDeck, Player aDealer) {
+		
+	}
 	
 	public String choise() {
 		Scanner reader = new Scanner(System.in);
@@ -173,6 +176,10 @@ public class Game {
 		reader.close();
 		r = r.toUpperCase();
 		return r;
+	}
+	
+	public void scoreInitial(Player aDealer, Player aPlayer) {
+		
 	}
 	
 	public void score(Player aDealer, Player aPlayer) {

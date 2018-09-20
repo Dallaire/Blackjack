@@ -108,14 +108,6 @@ public class blackjacktest extends TestCase {
 		assertEquals(2, player.getHand().size());
 	}
 	
-	public void testPlayerDisplayEnd() {
-		
-	}
-	
-	public void testDealerDisplayEnd() {
-		
-	}
-	
 	public void testPlayerHit() {
 		Player player = new Player("Player");
 		Deck deck = new Deck();
@@ -162,11 +154,23 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealer16less() {
-		
+		Game game = new Game();
+		Deck deck = new Deck();
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,6));
+		game.takeTurnDealer(deck, dealer);
+		assertEquals(3, dealer.getHand().size());
 	}
 	
 	public void testDealerSoft17() {
-		
+		Game game = new Game();
+		Deck deck = new Deck();
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,1));
+		game.takeTurnDealer(deck, dealer);
+		assertEquals(3, dealer.getHand().size());
 	}
 	
 	public void testDealerHitRepeated() {
@@ -272,12 +276,34 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerBlackjack() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		player.addCard(new Card(Suit.H,1));
+		player.addCard(new Card(Suit.H,12));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.scoreInitial(dealer, player);
+		String expected = "Blackjack! Player wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealerBlackjack() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,1));
+		dealer.addCard(new Card(Suit.H,12));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.scoreInitial(dealer, player);
+		String expected = "Blackjack! Dealer wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
+	
+	
 	
 	public void testPlayerBlackjackWin() {
 		Game game = new Game();
