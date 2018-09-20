@@ -29,21 +29,41 @@ public class blackjacktest extends TestCase {
 		OutputStream out = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(out));
 		player.printScore();
-		String expected = "Player's Score: 19 \r\n";
+		String expected = "Player's Score: 19\r\n";
 		assertEquals(expected, out.toString());
 	}
 	
-	public void testDealerScoreDisplay() {
+	public void testDealerScoreDisplay1() {
 		Player dealer = new Player("Dealer");
 		dealer.addCard(new Card(Suit.H,10));
 		dealer.addCard(new Card(Suit.H,9));
 		OutputStream out = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(out));
 		dealer.printScore();
-		String expected = "Player's Score: 19 \r\n";
+		String expected = "Dealer's Score: 19\r\n";
 		assertEquals(expected, out.toString());
 	}
 	
+	public void testDealerScoreDisplay2() {
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,12));
+		dealer.addCard(new Card(Suit.H,7));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		dealer.printScore();
+		String expected = "Dealer's Score: 17\r\n";
+		assertEquals(expected, out.toString());
+	}
+	public void testDealerScoreDisplay3() {
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,1));
+		dealer.addCard(new Card(Suit.C,13));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		dealer.printScore();
+		String expected = "Dealer's Score: 21\r\n";
+		assertEquals(expected, out.toString());
+	}
 	
 	public void testFileInput() {
 		Game game = new Game();
