@@ -10,21 +10,7 @@ public class Game {
 	public String mode;
 	
 	public static void main(String[] args) {
-		//Initialize
-		Deck deck = new Deck();
-		Player player = new Player("Player");
-		Player dealer = new Player("Dealer");
 		
-		//deal cards
-		player.deal(deck);
-		dealer.deal(deck);
-		player.deal(deck);
-		dealer.deal(deck);
-		
-		//print starting hands
-		System.out.println("Starting Hands");
-		player.printHand(false);
-		dealer.printHand(true);
 	}
 	
 	public Game() {
@@ -120,7 +106,7 @@ public class Game {
 			dealer.printHand(false);
 			dealer.printScore();
 			
-			score(dealer, player);
+			score(dealer, player); //end of game
 			
 		}
 		catch(FileNotFoundException ex) {
@@ -155,6 +141,28 @@ public class Game {
 		Deck deck = new Deck();
 		Player player = new Player("Player");
 		Player dealer = new Player("Dealer");
+		//deal cards
+		player.deal(deck);
+		dealer.deal(deck);
+		player.deal(deck);
+		dealer.deal(deck);
+				
+		//print starting hands
+		System.out.println("Starting Hands");
+		player.printHand(false);
+		player.printScore();
+		dealer.printHand(true);
+		
+		//initial
+		if(dealer.getScore() == 21)
+			System.out.println("Blackjack! Dealer wins.");
+		else if(player.getScore() == 21)
+			System.out.println("Blackjack! Player wins.");
+		else {
+			takeTurnPlayer(deck, player);
+			takeTurnDealer(deck, dealer);
+			score(dealer, player); //end of game
+		}
 	}
 	
 	
