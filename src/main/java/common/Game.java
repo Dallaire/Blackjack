@@ -52,7 +52,7 @@ public class Game {
 					active = dealer;
 				else if (i == 4) //back to player
 					active = player;
-				if (str.substring(0, 1) == "H") {
+				if (str.substring(0, 1).equals("H")) {
 					if (str.length() < 2)
 						continue;
 					else
@@ -64,7 +64,7 @@ public class Game {
 					else
 						active.addCard(new Card(Suit.H, value));
 				}
-				else if (str.substring(0, 1) == "C") {
+				else if (str.substring(0, 1).equals("C")) {
 					if (str.length() < 2) {
 						System.out.println("Invalid Input");
 						break;
@@ -78,7 +78,7 @@ public class Game {
 					else
 						active.addCard(new Card(Suit.C, value));
 				}
-				else if (str.substring(0, 1) == "D") {
+				else if (str.substring(0, 1).equals("D")) {
 					if (str.length() < 2) {
 						System.out.println("Invalid Input");
 						break;
@@ -92,7 +92,7 @@ public class Game {
 					else
 						active.addCard(new Card(Suit.D, value));
 				}
-				else if (str.substring(0, 1) == "S") {
+				else if (str.substring(0, 1).equals("S")) {
 					if (str.length() < 2) {
 						active = dealer;
 					}
@@ -109,10 +109,10 @@ public class Game {
 					System.out.println("Invalid Input");
 			}
 			
-			player.printHand(false);
+			/*player.printHand(false);
 			player.printScore();
 			dealer.printHand(false);
-			dealer.printScore();
+			dealer.printScore();*/
 			
 			score(dealer, player); //end of game
 			
