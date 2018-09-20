@@ -1,6 +1,8 @@
 package common;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
@@ -29,12 +31,19 @@ public class blackjacktest extends TestCase {
 		
 	}
 	
-	public void testInputChoice() {
-		run();
-		OutputStream out = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(out));
-		String expected = "Enter C for console F for file \r\n";
-		assertEquals(expected, out.toString());
+	public void testInputChoiceConsole() {
+		Game game = new Game();
+		InputStream in = new ByteArrayInputStream("c".getBytes());
+		System.setIn(in);
+		String choise = game.choise();
+		assertEquals("C", choise);
+	}
+	public void testInputChoiceFile() {
+		Game game = new Game();
+		InputStream in = new ByteArrayInputStream("f".getBytes());
+		System.setIn(in);
+		String choise = game.choise();
+		assertEquals("F", choise);
 	}
 	
 	public void testDealPlayer() {

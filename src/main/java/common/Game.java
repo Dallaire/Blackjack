@@ -1,5 +1,7 @@
 package common;
 
+import java.util.Scanner;
+
 public class Game {
 
 	public static void main(String[] args) {
@@ -20,6 +22,9 @@ public class Game {
 		dealer.printHand(true);
 	}
 	
+	public Game() {
+		
+	}
 	public void runFile() {
 		
 	}
@@ -32,8 +37,13 @@ public class Game {
 		
 	}
 	
-	public void run() {
-		
+	public String choise() {
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Enter C for console F for file");
+		String r = reader.nextLine();
+		reader.close();
+		r = r.toUpperCase();
+		return r;
 	}
 }
 
