@@ -33,9 +33,6 @@ public class Game {
 		
 	}
 	
-	public void chooseRunType() {
-		
-	}
 	
 	public String choise() {
 		Scanner reader = new Scanner(System.in);

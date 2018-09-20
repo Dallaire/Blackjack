@@ -24,11 +24,15 @@ public class blackjacktest extends TestCase {
 	
 	
 	public void testFileInput() {
-		
+		Game game = new Game();
+		game.runConsole();
+		assertEquals("File", game.mode);
 	}
 	
 	public void testConsoleInput() {
-		
+		Game game = new Game();
+		game.runConsole();
+		assertEquals("Console", game.mode);
 	}
 	
 	public void testInputChoiceConsole() {
