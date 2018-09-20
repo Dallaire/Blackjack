@@ -64,4 +64,8 @@ public class Player {
 		}
 		System.out.println(output);
 	}
+	
+	public void printScore() {
+		System.out.println(name + "'s Score: " + this.getScore());
+	}
 }
