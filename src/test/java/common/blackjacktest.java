@@ -31,6 +31,10 @@ public class blackjacktest extends TestCase {
 	
 	public void testInputChoice() {
 		run();
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		String expected = "Enter C for console F for file \r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealPlayer() {
