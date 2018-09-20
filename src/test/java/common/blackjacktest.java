@@ -147,7 +147,18 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testPlayerBust() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,12));
+		player.addCard(new Card(Suit.H, 11));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Bust! Dealer wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testDealer16less() {
@@ -189,7 +200,18 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testDealerBust() {
+		Game game = new Game();
+		Player player = new Player("Player");
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,12));
+		dealer.addCard(new Card(Suit.H, 11));
 		
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		game.score(dealer, player);
+		String expected = "Bust! Player wins.\r\n";
+		assertEquals(expected, out.toString());
 	}
 	
 	public void testAceLow() {
