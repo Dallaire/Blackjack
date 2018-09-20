@@ -3,7 +3,7 @@ package common;
 public class Game {
 
 	public static void main(String[] args) {
-		//intialize
+		//Initialize
 		Deck deck = new Deck();
 		Player player = new Player("Player");
 		Player dealer = new Player("Dealer");
@@ -25,6 +25,14 @@ public class Game {
 	}
 	
 	public void runConsole() {
+		
+	}
+	
+	public void chooseRunType() {
+		
+	}
+	
+	public void run() {
 		
 	}
 }

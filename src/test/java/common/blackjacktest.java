@@ -30,7 +30,7 @@ public class blackjacktest extends TestCase {
 	}
 	
 	public void testInputChoice() {
-		
+		run();
 	}
 	
 	public void testDealPlayer() {
