@@ -22,6 +22,28 @@ public class blackjacktest extends TestCase {
 		assertFalse(shuffledeck.cards.equals(unshuffleddeck.cards));
 	}
 	
+	public void testPlayerScoreDisplay() {
+		Player player = new Player("Player");
+		player.addCard(new Card(Suit.H,10));
+		player.addCard(new Card(Suit.H,9));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		player.printScore();
+		String expected = "Player's Score: 19 \r\n";
+		assertEquals(expected, out.toString());
+	}
+	
+	public void testDealerScoreDisplay() {
+		Player dealer = new Player("Dealer");
+		dealer.addCard(new Card(Suit.H,10));
+		dealer.addCard(new Card(Suit.H,9));
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+		dealer.printScore();
+		String expected = "Player's Score: 19 \r\n";
+		assertEquals(expected, out.toString());
+	}
+	
 	
 	public void testFileInput() {
 		Game game = new Game();
